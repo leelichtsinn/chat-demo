@@ -11,14 +11,9 @@ import Message from '../Message/Message';
 export default class App extends Component {
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route path="/">
-          <IndexRoute component={Home} />
-          <Route path="chat" component={MessageList} />
-          <Route path="user" component={User} />
-          <Route path="preferences" component={UserPrefs} />
-        </Route>
-      </Router>
+      <div>
+        {this.props.children}
+      </div>
     );
   }
 }
