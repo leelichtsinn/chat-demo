@@ -2,7 +2,7 @@ import {
   LOAD_REQUEST,
   LOAD_SUCCESS,
   LOAD_FAILURE
-} from '../actions/messages.js';
+} from '../actions/messages';
 
 const initialState = {
   isLoading: false,
@@ -35,6 +35,6 @@ export default (state = initialState, action) => {
       }
 
     default:
-
+      return state;
   }
-}
+};

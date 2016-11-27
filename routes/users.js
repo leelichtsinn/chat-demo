@@ -11,4 +11,6 @@ router.get('/user/preferences', function(req, res, next) {
   res.send('user preferences');
 });
 
+// TODO: create endpoint(s) to POST new preferences
+
 module.exports = router;

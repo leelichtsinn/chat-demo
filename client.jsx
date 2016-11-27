@@ -5,8 +5,8 @@ import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Link, Router, Route, IndexRoute, browserHistory } from 'react-router';
-import reducer from './reducers/index';
-// import action from './actions';
+import history from 'history';
+import store from './store';
 
 import App from './components/App/App';
 import Home from './components/Home/Home';
@@ -16,13 +16,8 @@ import NavBar from './components/NavBar/NavBar';
 import MessageList from './components/MessageList/MessageList';
 import Message from './components/Message/Message';
 
-/* eslint-disable no-underscore-dangle */
-const store = createStore(reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__());
-/* eslint-enable */
 
-const render = () => ReactDom.render((
+ReactDom.render((
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
@@ -36,6 +31,3 @@ const render = () => ReactDom.render((
   ),
   document.getElementById('root')
 );
-
-render();
-store.subscribe(render);

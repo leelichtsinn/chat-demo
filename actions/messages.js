@@ -14,7 +14,7 @@ export const newMessage = () => {
 export const loadMessages = (searchParam, dispatch) => {
   // indicate we are loading messages
   dispatch(requestMessages());
-  fetch(`api/messages/?s=${param}&r=json`)
+  fetch(`api/messages/?s=${searchParam}&r=json`)
   .then((response) => response.json())
   .then((responseJson) => {
     dispatch(messageSuccess(responseJson))
