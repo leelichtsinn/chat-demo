@@ -4,13 +4,13 @@ const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 
 // Load DB config from config file
-const config = requre(path.join(__dirname, '..', 'config', 'config.json'))[env];
+const config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
 // Init sequelize with params from config file
 console.log('Create sequelize...');
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-let db = {};
+var db = {};
 
 fs
   .readdirSync(__dirname)

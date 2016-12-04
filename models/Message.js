@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  let Message = sequelize.define('messages', {
+  var Message = sequelize.define('messages', {
     content: DataTypes.STRING
   }, {
     classMethods: {

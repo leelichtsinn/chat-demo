@@ -1,0 +1,8 @@
+{
+  "development": {
+    "dialect": "postgres",
+    "username": "leelichtsinn",
+    "password": "",
+    "database": "chatAssist_development"
+  }
+}

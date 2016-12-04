@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  let Profile = sequelize.define('profiles', {
+  var Profile = sequelize.define('profiles', {
     bio: DataTypes.TEXT
   }, {
       classMethods: {
