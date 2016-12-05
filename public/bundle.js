@@ -64,35 +64,35 @@
 
 	var _history2 = _interopRequireDefault(_history);
 
-	var _store = __webpack_require__(281);
+	var _store = __webpack_require__(266);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _App = __webpack_require__(271);
+	var _App = __webpack_require__(272);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Home = __webpack_require__(272);
+	var _Home = __webpack_require__(273);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _User = __webpack_require__(273);
+	var _User = __webpack_require__(274);
 
 	var _User2 = _interopRequireDefault(_User);
 
-	var _UserPrefs = __webpack_require__(275);
+	var _UserPrefs = __webpack_require__(276);
 
 	var _UserPrefs2 = _interopRequireDefault(_UserPrefs);
 
-	var _NavBar = __webpack_require__(274);
+	var _NavBar = __webpack_require__(275);
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
-	var _MessageList = __webpack_require__(278);
+	var _MessageList = __webpack_require__(279);
 
 	var _MessageList2 = _interopRequireDefault(_MessageList);
 
-	var _Message = __webpack_require__(279);
+	var _Message = __webpack_require__(280);
 
 	var _Message2 = _interopRequireDefault(_Message);
 
@@ -29289,7 +29289,30 @@
 	  value: true
 	});
 
-	var _messages = __webpack_require__(267);
+	var _redux = __webpack_require__(179);
+
+	var _reducers = __webpack_require__(267);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import createLogger from 'redux-logger';
+	var store = (0, _redux.createStore)(_reducers2.default);
+
+	exports.default = store;
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _messages = __webpack_require__(268);
 
 	var _messages2 = _interopRequireDefault(_messages);
 
@@ -29302,7 +29325,7 @@
 	});
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29313,7 +29336,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _messages = __webpack_require__(268);
+	var _messages = __webpack_require__(269);
 
 	var initialState = {
 	  isLoading: false,
@@ -29352,7 +29375,7 @@
 	};
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29362,7 +29385,7 @@
 	});
 	exports.messageFailure = exports.messageSuccess = exports.requestMessages = exports.loadMessages = exports.newMessage = undefined;
 
-	var _isomorphicFetch = __webpack_require__(269);
+	var _isomorphicFetch = __webpack_require__(270);
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
@@ -29411,19 +29434,19 @@
 	};
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(270);
+	__webpack_require__(271);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -29862,7 +29885,7 @@
 
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29879,27 +29902,27 @@
 
 	var _reactRouter = __webpack_require__(202);
 
-	var _Home = __webpack_require__(272);
+	var _Home = __webpack_require__(273);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _User = __webpack_require__(273);
+	var _User = __webpack_require__(274);
 
 	var _User2 = _interopRequireDefault(_User);
 
-	var _UserPrefs = __webpack_require__(275);
+	var _UserPrefs = __webpack_require__(276);
 
 	var _UserPrefs2 = _interopRequireDefault(_UserPrefs);
 
-	var _NavBar = __webpack_require__(274);
+	var _NavBar = __webpack_require__(275);
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
-	var _MessageList = __webpack_require__(278);
+	var _MessageList = __webpack_require__(279);
 
 	var _MessageList2 = _interopRequireDefault(_MessageList);
 
-	var _Message = __webpack_require__(279);
+	var _Message = __webpack_require__(280);
 
 	var _Message2 = _interopRequireDefault(_Message);
 
@@ -29937,7 +29960,7 @@
 	exports.default = App;
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30008,7 +30031,7 @@
 	exports.default = Home;
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30021,7 +30044,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavBar = __webpack_require__(274);
+	var _NavBar = __webpack_require__(275);
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
@@ -30070,7 +30093,7 @@
 	exports.default = User;
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30128,7 +30151,7 @@
 	exports.default = NavBar;
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30141,15 +30164,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavBar = __webpack_require__(274);
+	var _NavBar = __webpack_require__(275);
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
-	var _UserLikes = __webpack_require__(276);
+	var _UserLikes = __webpack_require__(277);
 
 	var _UserLikes2 = _interopRequireDefault(_UserLikes);
 
-	var _UserDislikes = __webpack_require__(277);
+	var _UserDislikes = __webpack_require__(278);
 
 	var _UserDislikes2 = _interopRequireDefault(_UserDislikes);
 
@@ -30177,7 +30200,7 @@
 	exports.default = UserPrefs;
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30247,7 +30270,7 @@
 	exports.default = UserLikes;
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30312,7 +30335,7 @@
 	exports.default = UserDislikes;
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30325,15 +30348,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavBar = __webpack_require__(274);
+	var _NavBar = __webpack_require__(275);
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
-	var _Message = __webpack_require__(279);
+	var _Message = __webpack_require__(280);
 
 	var _Message2 = _interopRequireDefault(_Message);
 
-	var _MessageForm = __webpack_require__(280);
+	var _MessageForm = __webpack_require__(281);
 
 	var _MessageForm2 = _interopRequireDefault(_MessageForm);
 
@@ -30365,7 +30388,7 @@
 	exports.default = MessageList;
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30400,7 +30423,7 @@
 	exports.default = Message;
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30431,29 +30454,6 @@
 	};
 
 	exports.default = MessageForm;
-
-/***/ },
-/* 281 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _redux = __webpack_require__(179);
-
-	var _reducers = __webpack_require__(266);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// import createLogger from 'redux-logger';
-	var store = (0, _redux.createStore)(_reducers2.default);
-
-	exports.default = store;
 
 /***/ }
 /******/ ]);
