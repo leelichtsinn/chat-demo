@@ -12,24 +12,23 @@ module.exports = function(passport) {
     passport.authenticate('local-signup', function(err, user, info) {
       console.log('authenticate called...');
       console.log('user...', user);
+      console.log('info...', info);
       console.log('err...', err);
       if (err) {
         return next(err) // will generate a 500 error
       }
-      if (user) {
-        return next({ error: true, message: info });
+      if (!user) {
+        return next({
+          error: true,
+          message: info
+        });
       }
       // res.json({ foo: "bar" });
-      req.login(user, { session: false }, function(loginErr) {
-        console.log('login called...');
-        console.log('user...', user);
+      req.login(user, function(loginErr) {
         if (loginErr) {
           return next(loginErr);
         }
-        return res.json({
-          email: user.email,
-          id: user.id
-        });
+        return res.json(user);
       });
     })(req, res, next);
   });
