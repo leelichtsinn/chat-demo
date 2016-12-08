@@ -1,5 +1,6 @@
 console.log('LocalStrategy...');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 
 const User = require('../models/').users;
 
@@ -35,15 +36,19 @@ function processSignupCallback(req, email, password, done) {
       return done(null, false, 'That email is already taken');
     } else {
       // create the new user
-      const userToCreate = req.body;
+      const userToCreate = getUserParams(req);
 
-      console.log('created user');
-      User.create(userToCreate)
-      .then(function(createdRecord) {
-        console.log('created user', createdRecord.json);
-        // once user is created call done with the created user
-        createdRecord.password = undefined;
-        return done(null, createdRecord);
+      bcrypt.hash(userToCreate.password, 10, function(err, hash) {
+        userToCreate.password = hash;
+
+        console.log('created user');
+        User.create(userToCreate)
+        .then(function(createdRecord) {
+          console.log('created user', createdRecord.json);
+          // once user is created call done with the created user
+          createdRecord.password = undefined;
+          return done(null, createdRecord);
+        });
       });
     }
   });
@@ -53,7 +58,7 @@ module.exports = function(passport) {
   initializeSerialization(passport);
 
   passport.use('local-signup', new LocalStrategy({
-    usernameField: 'email',
+    emailField: 'email',
     passwordField: 'password',
     session: false,
     passReqToCallback: true

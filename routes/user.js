@@ -17,7 +17,7 @@ module.exports = function(passport) {
       if (err) {
         return next(err) // will generate a 500 error
       }
-      if (user) {
+      if (!user) {
         return next({
           error: true,
           message: info
