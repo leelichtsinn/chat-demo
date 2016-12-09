@@ -1,6 +1,6 @@
-console.log('LocalStrategy...');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const User = require('../models/').users;
 
@@ -31,7 +31,6 @@ function processSignupCallback(req, email, password, done) {
   })
   .then(function(user) {
     if (user) {
-      console.log('user existed done');
       // user exist call done() passing null and false
       return done(null, false, 'That email is already taken');
     } else {
@@ -41,10 +40,12 @@ function processSignupCallback(req, email, password, done) {
       bcrypt.hash(userToCreate.password, 10, function(err, hash) {
         userToCreate.password = hash;
 
-        console.log('created user');
         User.create(userToCreate)
         .then(function(createdRecord) {
-          console.log('created user', createdRecord.json);
+          jwt.sign({ id: createdRecord.id }, 'MySuperDuperSecret', { expiresIn: 60 * 60 }, function(err, token) {
+            createdRecord.token = token;
+            return done(null, savedUser);
+          });
           // once user is created call done with the created user
           createdRecord.password = undefined;
           return done(null, createdRecord);
@@ -65,11 +66,24 @@ function processLoginCallback(email, password, done) {
       return done(null, false, 'No user name found with provided email');
     }
     bcrypt.compare(password, user.password, function(err, result) {
-      if (!result) {
-        return done(null, false, 'Invalid Password for provided email');
-      }
       user.password = undefined;
-      return done(null, user);
+      if (err) {
+        return done(null, false, err);
+      } else if (!result) {
+        return done(null, false, 'Invalid Password for provided email');
+      } else {
+        jwt.sign({
+          id: user.id
+        }, config.jwtSecret, {
+          expiresIn: config.jwtExpiration
+        }, function(err, token) {
+          user.token = token;
+          user.save()
+            .then(function(savedRecord) {
+              return done(null, savedRecord);
+            });
+        });
+      }
     });
   });
 }
