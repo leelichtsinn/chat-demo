@@ -54,6 +54,26 @@ function processSignupCallback(req, email, password, done) {
   });
 }
 
+function processLoginCallback(email, password, done) {
+  User.findOne({
+    where: {
+      'email': email
+    }
+  })
+  .then(function(user) {
+    if (!user) {
+      return done(null, false, 'No user name found with provided email');
+    }
+    bcrypt.compare(password, user.password, function(err, result) {
+      if (!result) {
+        return done(null, false, 'Invalid Password for provided email');
+      }
+      user.password = undefined;
+      return done(null, user);
+    });
+  });
+}
+
 module.exports = function(passport) {
   initializeSerialization(passport);
 
@@ -63,4 +83,9 @@ module.exports = function(passport) {
     session: false,
     passReqToCallback: true
   }, processSignupCallback));
+
+  passport.use('local-login', new LocalStrategy({
+    emailField: 'email',
+    passwordField: 'password'
+  }, processLoginCallback));
 };
