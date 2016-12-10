@@ -9,6 +9,7 @@ const passport = require('passport');
 const app = express();
 app.use(passport.initialize());
 require('./strategies/passport-local')(passport);
+require('./strategies/passport-jwt')(passport);
 
 const index = require('./routes/index');
 const users = require('./routes/users');
