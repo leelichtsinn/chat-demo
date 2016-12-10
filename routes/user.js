@@ -29,7 +29,8 @@ module.exports = function(passport) {
         }
         return res.json({
           email: user.email,
-          id: user.id
+          id: user.id,
+          token: user.token
         });
       });
     })(req, res, next);
@@ -50,7 +51,8 @@ module.exports = function(passport) {
         }
         return res.json({
           email: user.email,
-          id: user.id
+          id: user.id,
+          token: user.token
         });
       });
     })(req, res, next);
