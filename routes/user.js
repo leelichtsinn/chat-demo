@@ -23,18 +23,20 @@ module.exports = function(passport) {
           message: info
         });
       }
-      // res.json({ foo: "bar" });
       req.login(user, function(loginErr) {
         if (loginErr) {
           return next(loginErr);
         }
-        return res.json(user);
+        return res.json({
+          email: user.email,
+          id: user.id
+        });
       });
     })(req, res, next);
   });
 
   router.post('/login', function(req, res, next) {
-    passport.authenticate('local-signup', function(err, user, info) {
+    passport.authenticate('local-login', function(err, user, info) {
       if (err) {
         return next(err);
       }

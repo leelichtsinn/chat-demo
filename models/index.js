@@ -3,7 +3,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 
 // Load DB config from config file
-const config = require(path.join(__dirname, '..', 'config', 'config.js'))[env];
+const config = require(path.join(__dirname, '..', 'config', 'config.js'));
 
 // Init sequelize with params from config file
 console.log('Create sequelize...');

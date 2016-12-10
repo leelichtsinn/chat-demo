@@ -75,7 +75,7 @@ function processLoginCallback(email, password, done) {
         jwt.sign({
           id: user.id
         }, config.jwtSecret, {
-          expiresIn: config.jwtExpiration
+          expiresIn: config.jwtExpiration * 60
         }, function(err, token) {
           user.token = token;
           user.save()
