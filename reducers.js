@@ -1,6 +1,8 @@
-import messages from './reducers/messages';
 import { combineReducers } from 'redux';
+import auth from '../reducers/auth';
+import http_request from '../reducers/http_request'
 
 export default combineReducers({
-  messages
+  auth,
+  http_request
 });
