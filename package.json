@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "webpack-watch": "webpack -w",
+    "webpack-watch": "webpack -d --watch --colors",
     "express-server": "nodemon ./bin/www",
     "start": "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\""
   },
