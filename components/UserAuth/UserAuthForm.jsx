@@ -19,7 +19,7 @@ export default class UserAuthForm extends Component {
         </div>
         <div>
           <input
-            value={this.props.userAuthForm.email}
+            value={this.props.userAuthForm}
             onChange={(e) => this.props.onEmailChange(e.target.value)}
             type='text'
             name='email' />
@@ -29,7 +29,7 @@ export default class UserAuthForm extends Component {
         </div>
         <div>
           <input
-            value={this.props.userAuthForm.password}
+            value={this.props.userAuthForm}
             onChange={(e) => this.props.onPasswordChange(e.target.value)}
             type='password'
             name='password' />

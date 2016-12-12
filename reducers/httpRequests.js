@@ -1,7 +1,7 @@
 import {
   HTTP_REQUEST_REQUEST,
   HTTP_REQUEST_FAILURE
-} from '../actions/http_request';
+} from '../actions/httpRequest';
 
 const initialState = {
   requestPending: false,

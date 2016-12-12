@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   initiateHTTPRequest,
   processHTTPError
-} from '../actions/http_request';
+} from '../actions/httpRequest';
 import {
   onUserAuthFormChange,
   processUserDetailsRequestFailure
