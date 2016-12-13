@@ -90,7 +90,6 @@ function processLoginCallback(email, password, done) {
 
 module.exports = function(passport) {
   initializeSerialization(passport);
-
   passport.use('local-signup', new LocalStrategy({
     emailField: 'email',
     passwordField: 'password',
