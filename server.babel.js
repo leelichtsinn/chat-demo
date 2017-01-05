@@ -32,6 +32,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', index);
 // app.use('/api/users', users);
 app.use('/api/user', userRoutes);
+
+app.use('/api/protected', function(req, res, next) {
+  passport.authenticate('jwt', { session: false }, function(err, user, jwtError) {
+    if (err) {
+      return next(err);
+    } if (jwtError) {
+      return next(jwtError);
+    } if (!user) {
+      return next(new Error('No User found matching authentication'));
+    }
+    req.logIn(user, function(error) {
+      if (error) {
+        return next(error);
+      }
+      next();
+    });
+  })(req, res, next)
+});
+
 app.use('/api/protected', profileRoutes);
 
 app.route(/.*/).get(function(req, res) {
