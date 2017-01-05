@@ -15,3 +15,5 @@ router.get('profile/:id', function(req, res, next) {
     })
   });
 });
+
+module.exports = router;

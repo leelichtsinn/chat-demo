@@ -14,6 +14,7 @@ require('./strategies/passport-jwt')(passport);
 const index = require('./routes/index');
 const users = require('./routes/users');
 const userRoutes = require('./routes/user')(passport);
+const profileRoutes = require('./routes/profile');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', index);
 // app.use('/api/users', users);
 app.use('/api/user', userRoutes);
+app.use('/api/protected', profileRoutes);
 
 app.route(/.*/).get(function(req, res) {
   res.sendFile(__dirname + '/public/index.html')
