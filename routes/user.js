@@ -5,6 +5,10 @@ const router = express.Router();
 const models = require('../models');
 
 module.exports = function(passport) {
+  // GET /api/users
+  router.get('/', function(req,res) {
+    res.render('index');
+  });
 
   // POST /api/user/signup
   router.post('/signup', function(req, res, next) {
@@ -39,7 +43,7 @@ module.exports = function(passport) {
   router.post('/login', function(req, res, next) {
     passport.authenticate('local-login', function(err, user, info) {
       if (err) {
-        return next(err);
+        return next(err); // will generate a 500 error
       }
       if (!user) {
         return next({ error: true, message: info });

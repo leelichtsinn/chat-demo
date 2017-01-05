@@ -26,7 +26,7 @@ export default class User extends Component {
   }
 }
 
-User.propTypes = {
-  userDetails: Proptypes.object,
-  onDidMount: propTypes.func
-}
+// User.propTypes = {
+//   userDetails: Proptypes.object,
+//   onDidMount: PropTypes.func
+// }

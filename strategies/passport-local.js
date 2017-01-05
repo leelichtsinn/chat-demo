@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const config = require('../config/config');
 
 const User = require('../models/').users;
 
@@ -41,15 +42,19 @@ function processSignupCallback(req, email, password, done) {
         userToCreate.password = hash;
 
         User.create(userToCreate)
-        .then(function(createdRecord) {
-          jwt.sign({ id: createdRecord.id }, 'MySuperDuperSecret', { expiresIn: 60 * 60 }, function(err, token) {
-            createdRecord.token = token;
-            return done(null, savedUser);
+          .then(function(createdRecord) {
+            jwt.sign({
+              id: createdRecord.id
+            }, config.jwtSecret, {
+              expiresIn: config.jwtExpiration * 60
+            }, function(err, token) {
+              createdRecord.token = token;
+              return done(null, savedUser);
+            });
+            // once user is created call done with the created user
+            createdRecord.password = undefined;
+            return done(null, createdRecord);
           });
-          // once user is created call done with the created user
-          createdRecord.password = undefined;
-          return done(null, createdRecord);
-        });
       });
     }
   });
@@ -91,14 +96,14 @@ function processLoginCallback(email, password, done) {
 module.exports = function(passport) {
   initializeSerialization(passport);
   passport.use('local-signup', new LocalStrategy({
-    emailField: 'email',
+    usernameField: 'email',
     passwordField: 'password',
     session: false,
-    passReqToCallback: true
+    passReqToCallback: true,
   }, processSignupCallback));
 
   passport.use('local-login', new LocalStrategy({
-    emailField: 'email',
-    passwordField: 'password'
+    usernameField: 'email',
+    passwordField: 'password',
   }, processLoginCallback));
 };
