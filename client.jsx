@@ -11,8 +11,8 @@ import store from './store';
 import App from './components/App/App';
 import Home from './components/Home/Home';
 import SignUp from './components/UserAuth/SignUp';
-import Login from './components/UserAuth/Login';
-import User from './components/User/User';
+import LoginApp from './containers/LoginApp';
+import ProfileApp from './containers/ProfileApp';
 import UserPrefs from './components/UserPrefs/UserPrefs';
 import NavBar from './components/NavBar/NavBar';
 import MessageList from './components/MessageList/MessageList';
@@ -25,9 +25,9 @@ ReactDom.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={LoginApp} />
         <Route path="chat" component={MessageList} />
-        <Route path="user" component={User} />
+        <Route path="user" component={ProfileApp} />
         <Route path="preferences" component={UserPrefs} />
       </Route>
     </Router>

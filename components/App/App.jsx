@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import Home from '../Home/Home';
-import User from '../User/User';
+import Profile from '../Profile/Profile';
 import UserPrefs from '../UserPrefs/UserPrefs';
 import NavBar from '../NavBar/NavBar';
 import MessageList from '../MessageList/MessageList';
