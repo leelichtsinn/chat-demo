@@ -1,7 +1,7 @@
-const LOAD_REQUEST = 'messages/LOAD_REQUEST';
-const LOAD_SUCCESS = 'messages/LOAD_SUCCESS';
-const LOAD_FAILURE = 'messages/LOAD_FAILURE';
-const ADD_MESSAGE = 'messages/ADD_MESSAGE';
+export const LOAD_REQUEST = 'messages/LOAD_REQUEST';
+ export const LOAD_SUCCESS = 'messages/LOAD_SUCCESS';
+export const LOAD_FAILURE = 'messages/LOAD_FAILURE';
+ export const ADD_MESSAGE = 'messages/ADD_MESSAGE';
 
 import fetch from 'isomorphic-fetch';
 

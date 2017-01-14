@@ -15,6 +15,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const userRoutes = require('./routes/user')(passport);
 const profileRoutes = require('./routes/profile');
+const messages = require('./routes/messages');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
