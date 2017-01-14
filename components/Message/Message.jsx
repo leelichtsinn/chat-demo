@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-const Message = (props) => {
+export default (props) => {
   return (
-      <li className="Message">
-        <strong>USER NAME</strong>
-        <div>TEXT/Message Content</div>
-      </li>
+    <div className='Message'>
+      {props.content}
+    </div>
   );
-}
-
-export default Message;
+};
