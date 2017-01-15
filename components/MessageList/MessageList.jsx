@@ -10,8 +10,9 @@ export default class MessageList extends Component {
   }
 
   render() {
-    const messages = this.props.comments
-      .map((message, index) => <Message key={index}
+    const messages = this.props.messages
+      .map((message, index) => <Message
+      key={index}
       content={message.content} />);
     return (
       <div className='MessageList'>{comments}</div>

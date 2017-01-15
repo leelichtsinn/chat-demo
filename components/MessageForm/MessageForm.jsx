@@ -31,7 +31,7 @@ class MessageForm extends Component {
 }
 
 MessageForm.propTypes = {
-  messageId: Proptypes.string.isRequired,
+  messageId: PropTypes.string.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   onFormChange: PropTypes.func.isRequired
 }
