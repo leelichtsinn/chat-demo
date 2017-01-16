@@ -1,11 +1,11 @@
 import React from 'react';
-import Thread from '../Thread/Thread';
-import MessageForm from '../MessageForm/MessageForm';
+import ChatThread from './ChatThread';
+import MessageForm from './MessageForm';
 
 const Chat = () => {
   return (
     <div className="Chat">
-      <Thread />
+      <ChatThread />
       <MessageForm />
     </div>
   );

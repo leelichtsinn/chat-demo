@@ -5,8 +5,8 @@ import Home from '../Home/Home';
 import User from '../User/User';
 import UserPrefs from '../UserPrefs/UserPrefs';
 import NavBar from '../NavBar/NavBar';
-import MessageList from '../MessageList/MessageList';
-import Message from '../Message/Message';
+import MessageList from '../Chat/ChatThread';
+import Message from '../Chat/Message';
 
 export default class App extends Component {
   render() {
