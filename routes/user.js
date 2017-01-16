@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const models = require('../models');
+// const models = require('../models');
 
 module.exports = function(passport) {
   // GET /api/users
@@ -22,42 +22,32 @@ module.exports = function(passport) {
         return next(err) // will generate a 500 error
       }
       if (!user) {
-        return next({
-          error: true,
-          message: info
-        });
+        return next(new Error(info));
       }
       req.login(user, function(loginErr) {
         if (loginErr) {
           return next(loginErr);
         }
-        return res.json({
-          email: user.email,
-          id: user.id,
-          token: user.token
-        });
+        return res.json(user);
       });
     })(req, res, next);
   });
 
+  // POST /api/user/login
   router.post('/login', function(req, res, next) {
     passport.authenticate('local-login', function(err, user, info) {
       if (err) {
         return next(err); // will generate a 500 error
       }
       if (!user) {
-        return next({ error: true, message: info });
+        return next(new Error(info));
       }
 
       req.login(user, function(loginErr) {
         if (loginErr) {
           return next(loginErr);
         }
-        return res.json({
-          email: user.email,
-          id: user.id,
-          token: user.token
-        });
+        return res.json(user);
       });
     })(req, res, next);
   });

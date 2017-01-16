@@ -46,14 +46,14 @@ function processSignupCallback(req, email, password, done) {
             jwt.sign({
               id: createdRecord.id
             }, config.jwtSecret, {
-              expiresIn: config.jwtExpiration * 60
+              expiresIn: config.jwtExpiration
             }, function(err, token) {
               createdRecord.token = token;
-              return done(null, savedUser);
+              createdRecord.save()
+                .then(function(savedUser) {
+                  return done(null, savedUser);
+                });
             });
-            // once user is created call done with the created user
-            createdRecord.password = undefined;
-            return done(null, createdRecord);
           });
       });
     }
@@ -80,7 +80,7 @@ function processLoginCallback(email, password, done) {
         jwt.sign({
           id: user.id
         }, config.jwtSecret, {
-          expiresIn: config.jwtExpiration * 60
+          expiresIn: config.jwtExpiration
         }, function(err, token) {
           user.token = token;
           user.save()
@@ -98,11 +98,13 @@ module.exports = function(passport) {
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
+    session: false,
     passReqToCallback: true,
   }, processSignupCallback));
 
   passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
+    session: false,
   }, processLoginCallback));
 };

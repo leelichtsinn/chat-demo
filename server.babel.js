@@ -15,6 +15,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const userRoutes = require('./routes/user')(passport);
 const profileRoutes = require('./routes/profile');
+const messages = require('./routes/messages');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,9 +33,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', index);
 // app.use('/api/users', users);
 app.use('/api/user', userRoutes);
+// app.use('/api/messages');
 
 app.use('/api/protected', function(req, res, next) {
-  passport.authenticate('jwt', { session: false }, function(err, user, jwtError) {
+  passport.authenticate('jwt', {
+    session: false
+  }, function(err, user, jwtError) {
     if (err) {
       return next(err);
     } if (jwtError) {

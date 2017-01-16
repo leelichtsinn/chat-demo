@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import {
-  initiateHTTPRequest,
   processUserDetailsRequestSuccess,
   processUserDetailsRequestFailure,
+} from '../actions/auth';
+import {
+  initiateHTTPRequest,
   processHTTPError
 } from '../actions/httpRequest';
 import Profile from '../components/Profile/Profile';
@@ -42,7 +44,7 @@ const mapDispatchToProps = dispatch => {
             return;
           }
           dispatch(processUserDetailsRequestSuccess(json));
-        })
+        });
       })
       .catch((err) => {
         console.error(err);

@@ -4,7 +4,7 @@ class Auth {
   }
 
   getToken() {
-    localStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   logout() {

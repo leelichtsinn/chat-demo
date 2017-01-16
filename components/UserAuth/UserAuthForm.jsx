@@ -14,12 +14,13 @@ export default class UserAuthForm extends Component {
     return (
       <div>
         <h1>{header}</h1>
+        <div>{this.props.userError}</div>
         <div>
           <label>Email</label>
         </div>
         <div>
           <input
-            value={this.props.userAuthForm}
+            value={this.props.userAuthForm.email}
             onChange={(e) => this.props.onEmailChange(e.target.value)}
             type='text'
             name='email' />
@@ -29,7 +30,7 @@ export default class UserAuthForm extends Component {
         </div>
         <div>
           <input
-            value={this.props.userAuthForm}
+            value={this.props.userAuthForm.password}
             onChange={(e) => this.props.onPasswordChange(e.target.value)}
             type='password'
             name='password' />

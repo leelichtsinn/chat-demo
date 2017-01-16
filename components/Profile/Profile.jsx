@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import NavBar from '../NavBar/NavBar';
-
 export default class Profile extends Component {
   constructor(props) {
     super(props);
