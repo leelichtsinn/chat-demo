@@ -1,6 +1,8 @@
-import messages from './reducers/messages';
 import { combineReducers } from 'redux';
+import chat from './reducers/chat';
+import httpRequest from './reducers/httpRequest';
 
 export default combineReducers({
-  messages
+  chat,
+  httpRequest
 });

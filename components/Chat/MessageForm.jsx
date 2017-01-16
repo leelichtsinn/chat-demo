@@ -29,7 +29,7 @@ class MessageForm extends Component {
   }
 }
 
-messageForm.propTypes = {
+MessageForm.propTypes = {
   messageId: PropTypes.string.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   onFormChange: PropTypes.func.isRequired
