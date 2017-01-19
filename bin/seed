@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const models = require('../models/'); // models/indes.js
+const fixtures = require('../fixtures'); // fixtures/index.js
+
+models.users.sync({ force: true }).then(function() {
+
+  fixtures.users.forEach(function(fixture) {
+    models.users.create(fixture);
+  });
+
+  models.profiles.sync({ force: true }).then(function() {
+    fixtures.profiles.forEach(function(fixture) {
+      models.profiles.create(fixture);
+    });
+  });
+
+  models.messages.sync({ force: true }).then(function() {
+    fixtures.messages.forEach(function(fixture) {
+      models.messages.create(fixture);
+    });
+  });
+});
