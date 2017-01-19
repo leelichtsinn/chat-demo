@@ -2,8 +2,6 @@
 const express = require('express');
 const router = express.Router();
 
-const models = require('../models');
-
 module.exports = function(passport) {
 
   // POST /api/user/signup
@@ -15,7 +13,7 @@ module.exports = function(passport) {
       console.log('info...', info);
       console.log('err...', err);
       if (err) {
-        return next(err) // will generate a 500 error
+        return next(err); // will generate a 500 error
       }
       if (!user) {
         return next({

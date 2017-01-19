@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
+import UserAuthFormApp from '../../containers/UserAuthFormApp';
 
 export default class Login extends Component {
   render() {
     return (
       <div>
-        <AuthFormApp signUp={false} />
+        <UserAuthFormApp signUp={false} />
       </div>
     );
   }
-};
+}

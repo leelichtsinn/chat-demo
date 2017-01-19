@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-import NavBar from '../NavBar/NavBar';
+export default class User extends Component {
+	constructor(props) {
+		super(props);
+	}
 
-const User = (props) => {
-  return (
-    <div className="User">
-      <NavBar />
-      <div>
-        <h1>User Profile</h1>
-        <h2>User Name</h2>
-      </div>
-      <div>
-        <ul>
-          <li>Email</li>
-          <li>Cellphone</li>
-        </ul>
-      </div>
-    </div>
-  );
+	componentDidMount() {
+		if (this.props.onDidMount) {
+			this.props.onDidMount(this.props.params.id);
+		}
+	}
+
+	render() {
+		return (
+			<div>
+				<h1>User Details</h1>
+				<div>
+				  <label>Email</label>
+				</div>
+				<span>{this.props.userDetails.email}</span>
+			</div>
+		);
+	}
 }
 
-export default User;
+User.propTypes = {
+	userDetails: PropTypes.object,
+	onDidMount: PropTypes.func
+}

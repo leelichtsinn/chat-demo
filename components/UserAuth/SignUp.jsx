@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import UserAuthFormApp from '../../containers/UserAuthFormApp';
 
 export default class SignUp extends Component {
   render() {
     return (
       <div>
-        <AuthFormApp signUp={true} />
+        <UserAuthFormApp signUp={true} />
       </div>
     );
   }
