@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const env = process.env.NODE_ENV || 'development';
 
 // Load DB config from config file
-const config = requre(path.join(__dirname, '..', 'config', 'config.json'))[env];
+const config = require(path.join(__dirname, '..', 'config', 'config.js'));
 
 // Init sequelize with params from config file
 console.log('Create sequelize...');

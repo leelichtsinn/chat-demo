@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var profileRoutes = require('./routes/profile');
+// var profileRoutes = require('./routes/profile');
 var messages = require('./routes/messages');
 
 var app = express();
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', index);
 app.use('/api/users', users);
-app.use('/api/profile', profileRoutes);
+// app.use('/api/profile', profileRoutes);
 app.use('/api/messages', messages);
 
 app.route(/.*/).get(function(req, res) {

@@ -22,12 +22,14 @@ router.get('/new', function(req, res, next) {
 
 router.post('/new', function(req, res, next) {
   models.users.findOne().then(function(user) {
-    userId: user.id,
-    content: req.body.body
-  }).then(function saved(message) {
-    res.json({
-      message: message
-    });
+    models.messages.create({
+      userId: user.id,
+      content: req.body.body
+    }).then(function saved(message) {
+      res.json({
+        message: message
+      });
+    })
   });
 });
 
